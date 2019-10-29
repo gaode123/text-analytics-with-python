@@ -10,7 +10,8 @@ import re
 import nltk
 import string
 from nltk.stem import WordNetLemmatizer
-from HTMLParser import HTMLParser
+#from HTMLParser import HTMLParser python2
+from html.parser import HTMLParser
 import unicodedata
 
 stopword_list = nltk.corpus.stopwords.words('english')
@@ -45,7 +46,7 @@ def expand_contractions(text, contraction_mapping):
     expanded_text = re.sub("'", "", expanded_text)
     return expanded_text
     
-    
+'''    
 from pattern.en import tag
 from nltk.corpus import wordnet as wn
 
@@ -69,7 +70,33 @@ def pos_tag_text(text):
                          for word, pos_tag in
                          tagged_text]
     return tagged_lower_text
-    
+ '''
+
+
+#词形还原函数
+# Annotate text tokens with POS tags
+from nltk import word_tokenize, pos_tag
+from nltk.corpus import wordnet as wn
+def pos_tag_text(text):
+    def penn_to_wn_tags(pos_tag):
+        if pos_tag.startswith('J'):
+            return wn.ADJ
+        elif pos_tag.startswith('V'):
+            return wn.VERB
+        elif pos_tag.startswith('N'):
+            return wn.NOUN
+        elif pos_tag.startswith('R'):
+            return wn.ADV
+        else:
+            return None
+
+    tokens= word_tokenize(text)
+    tagged_text = pos_tag(tokens)
+    tagged_lower_text = [(word.lower(), penn_to_wn_tags(pos_tag))
+                         for word, pos_tag in
+                         tagged_text]
+    return tagged_lower_text
+
 # lemmatize text based on POS tags    
 def lemmatize_text(text):
     

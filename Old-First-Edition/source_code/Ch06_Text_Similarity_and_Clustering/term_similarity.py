@@ -37,21 +37,21 @@ term3 = 'Elephant'
 terms = [root, term1, term2, term3]
 
 vec_root, vec_term1, vec_term2, vec_term3 = vectorize_terms(terms)
-print '''
+print ('''
 root: {}
 term1: {}
 term2: {}
 term3: {}
-'''.format(vec_root, vec_term1, vec_term2, vec_term3)
+'''.format(vec_root, vec_term1, vec_term2, vec_term3))
 
 features, (boc_root, boc_term1, boc_term2, boc_term3) = boc_term_vectors(terms)
-print 'Features:', features
-print '''
+print ('Features:', features)
+print ('''
 root: {}
 term1: {}
 term2: {}
 term3: {}
-'''.format(boc_root, boc_term1, boc_term2, boc_term3)
+'''.format(boc_root, boc_term1, boc_term2, boc_term3))
 
 
 
@@ -133,55 +133,55 @@ boc_vector_terms = [boc_term1, boc_term2, boc_term3]
 
 # HAMMING DISTANCE DEMO
 for term, vector_term in zip(terms, vector_terms):
-    print 'Hamming distance between root: {} and term: {} is {}'.format(root_term,
+    print ('Hamming distance between root: {} and term: {} is {}'.format(root_term,
                                                                 term,
-                                                                hamming_distance(root_vector, vector_term, norm=False))
+                                                                hamming_distance(root_vector, vector_term, norm=False)))
 
 
 for term, vector_term in zip(terms, vector_terms):
-    print 'Normalized Hamming distance between root: {} and term: {} is {}'.format(root_term,
+    print ('Normalized Hamming distance between root: {} and term: {} is {}'.format(root_term,
                                                                 term,
-                                                                round(hamming_distance(root_vector, vector_term, norm=True), 2))
+                                                                round(hamming_distance(root_vector, vector_term, norm=True), 2)))
 
 
 # MANHATTAN DISTANCE DEMO
 for term, vector_term in zip(terms, vector_terms):
-    print 'Manhattan distance between root: {} and term: {} is {}'.format(root_term,
+    print ('Manhattan distance between root: {} and term: {} is {}'.format(root_term,
                                                                 term,
-                                                                manhattan_distance(root_vector, vector_term, norm=False))
+                                                                manhattan_distance(root_vector, vector_term, norm=False)))
 
 for term, vector_term in zip(terms, vector_terms):
-    print 'Normalized Manhattan distance between root: {} and term: {} is {}'.format(root_term,
+    print ('Normalized Manhattan distance between root: {} and term: {} is {}'.format(root_term,
                                                                 term,
-                                                                round(manhattan_distance(root_vector, vector_term, norm=True),2))
+                                                                round(manhattan_distance(root_vector, vector_term, norm=True),2)))
 
 
 # EUCLIDEAN DISTANCE DEMO
 for term, vector_term in zip(terms, vector_terms):
-    print 'Euclidean distance between root: {} and term: {} is {}'.format(root_term,
+    print ('Euclidean distance between root: {} and term: {} is {}'.format(root_term,
                                                                 term,
-                                                                round(euclidean_distance(root_vector, vector_term),2))
+                                                                round(euclidean_distance(root_vector, vector_term),2)))
 
 
 # LEVENSHTEIN EDIT DISTANCE DEMO
 for term in terms:
     edit_d, edit_m = levenshtein_edit_distance(root_term, term)
-    print 'Computing distance between root: {} and term: {}'.format(root_term,
-                                                                    term)
-    print 'Levenshtein edit distance is {}'.format(edit_d)
-    print 'The complete edit distance matrix is depicted below'
-    print edit_m
-    print '-'*30                                                                             
+    print ('Computing distance between root: {} and term: {}'.format(root_term,
+                                                                    term))
+    print ('Levenshtein edit distance is {}'.format(edit_d))
+    print ('The complete edit distance matrix is depicted below')
+    print (edit_m)
+    print ('-'*30)
 
 
 # COSINE DISTANCE\SIMILARITY DEMO
 for term, boc_term in zip(terms, boc_vector_terms):
-    print 'Analyzing similarity between root: {} and term: {}'.format(root_term,
-                                                                      term)
+    print ('Analyzing similarity between root: {} and term: {}'.format(root_term,
+                                                                      term))
     distance = round(cosine_distance(root_boc_vector, boc_term),2)
     similarity = 1 - distance                                                           
-    print 'Cosine distance  is {}'.format(distance)
-    print 'Cosine similarity  is {}'.format(similarity)
-    print '-'*40
+    print ('Cosine distance  is {}'.format(distance))
+    print ('Cosine similarity  is {}'.format(similarity))
+    print ('-'*40)
                                                                 
 

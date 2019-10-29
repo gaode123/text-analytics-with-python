@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 """
 Created on Sun Sep 11 19:29:11 2016
 
@@ -51,23 +51,23 @@ def compute_cosine_similarity(doc_features, corpus_features,
     return top_docs_with_score
 
     
-print 'Document Similarity Analysis using Cosine Similarity'
-print '='*60
+print ('Document Similarity Analysis using Cosine Similarity')
+print ('='*60)
 for index, doc in enumerate(query_docs):
     
     doc_tfidf = query_docs_tfidf[index]
     top_similar_docs = compute_cosine_similarity(doc_tfidf,
                                              tfidf_features,
                                              top_n=2)
-    print 'Document',index+1 ,':', doc
-    print 'Top', len(top_similar_docs), 'similar docs:'
-    print '-'*40 
+    print ('Document',index+1 ,':', doc)
+    print ('Top', len(top_similar_docs), 'similar docs:')
+    print ('-'*40)
     for doc_index, sim_score in top_similar_docs:
-        print 'Doc num: {} Similarity Score: {}\nDoc: {}'.format(doc_index+1,
+        print ('Doc num: {} Similarity Score: {}\nDoc: {}'.format(doc_index+1,
                                                                  sim_score,
-                                                                 toy_corpus[doc_index])  
-        print '-'*40       
-    print                                                      
+                                                                 toy_corpus[doc_index]))
+        print ('-'*40)
+    print()
     
 
 def compute_hellinger_bhattacharya_distance(doc_features, corpus_features,
@@ -88,23 +88,23 @@ def compute_hellinger_bhattacharya_distance(doc_features, corpus_features,
                             for index in top_docs]
     return top_docs_with_score 
 
-print 'Document Similarity Analysis using Hellinger-Bhattacharya distance'
-print '='*60
+print ('Document Similarity Analysis using Hellinger-Bhattacharya distance')
+print ('='*60)
 for index, doc in enumerate(query_docs):
     
     doc_tfidf = query_docs_tfidf[index]
     top_similar_docs = compute_hellinger_bhattacharya_distance(doc_tfidf,
                                              tfidf_features,
                                              top_n=2)
-    print 'Document',index+1 ,':', doc
-    print 'Top', len(top_similar_docs), 'similar docs:'
-    print '-'*40 
+    print ('Document',index+1 ,':', doc)
+    print ('Top', len(top_similar_docs), 'similar docs:')
+    print ('-'*40)
     for doc_index, sim_score in top_similar_docs:
-        print 'Doc num: {} Distance Score: {}\nDoc: {}'.format(doc_index+1,
+        print ('Doc num: {} Distance Score: {}\nDoc: {}'.format(doc_index+1,
                                                                  sim_score,
-                                                                 toy_corpus[doc_index])  
-        print '-'*40       
-    print                 
+                                                                 toy_corpus[doc_index]))
+        print ('-'*40)
+    print()
 
 
 import scipy.sparse as sp 
@@ -158,8 +158,8 @@ avg_dl = np.average(doc_lengths)
 corpus_term_idfs = compute_corpus_term_idfs(corpus_features,
                                             norm_corpus)
                  
-print 'Document Similarity Analysis using BM25'
-print '='*60
+print ('Document Similarity Analysis using BM25')
+print ('='*60)
 for index, doc in enumerate(query_docs):
     
     doc_features = query_docs_features[index]
@@ -170,12 +170,12 @@ for index, doc in enumerate(query_docs):
                                                corpus_term_idfs,
                                                k1=1.5, b=0.75,
                                                top_n=2)
-    print 'Document',index+1 ,':', doc
-    print 'Top', len(top_similar_docs), 'similar docs:'
-    print '-'*40 
+    print ('Document',index+1 ,':', doc)
+    print ('Top', len(top_similar_docs), 'similar docs:')
+    print ('-'*40)
     for doc_index, sim_score in top_similar_docs:
-        print 'Doc num: {} BM25 Score: {}\nDoc: {}'.format(doc_index+1,
+        print ('Doc num: {} BM25 Score: {}\nDoc: {}'.format(doc_index+1,
                                                                  sim_score,
-                                                                 toy_corpus[doc_index])  
-        print '-'*40       
-    print
+                                                                 toy_corpus[doc_index]))
+        print ('-'*40)
+    print()

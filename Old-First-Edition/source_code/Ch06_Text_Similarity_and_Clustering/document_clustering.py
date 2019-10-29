@@ -10,13 +10,13 @@ import numpy as np
 
 movie_data = pd.read_csv('movie_data.csv')
 
-print movie_data.head()
+print(movie_data.head())
 
 movie_titles = movie_data['Title'].tolist()
 movie_synopses = movie_data['Synopsis'].tolist()
 
-print 'Movie:', movie_titles[0]
-print 'Movie Synopsis:', movie_synopses[0][:1000]
+print('Movie:', movie_titles[0])
+print('Movie Synopsis:', movie_synopses[0][:1000])
 
 
 from normalization import normalize_corpus
@@ -33,13 +33,13 @@ vectorizer, feature_matrix = build_feature_matrix(norm_movie_synopses,
                                                   min_df=0.24, max_df=0.85,
                                                   ngram_range=(1, 2))
 # view number of features
-print feature_matrix.shape     
+print (feature_matrix.shape)
 
 # get feature names
 feature_names = vectorizer.get_feature_names()
 
 # print sample features
-print feature_names[:20]      
+print (feature_names[:20])
 
                     
 from sklearn.cluster import KMeans
@@ -60,7 +60,7 @@ movie_data['Cluster'] = clusters
 from collections import Counter
 # get the total number of movies per cluster
 c = Counter(clusters)
-print c.items()
+print (c.items())
 
 
 def get_cluster_data(clustering_obj, movie_data, 
@@ -90,12 +90,12 @@ def get_cluster_data(clustering_obj, movie_data,
 def print_cluster_data(cluster_data):
     # print cluster details
     for cluster_num, cluster_details in cluster_data.items():
-        print 'Cluster {} details:'.format(cluster_num)
-        print '-'*20
-        print 'Key features:', cluster_details['key_features']
-        print 'Movies in this cluster:'
-        print ', '.join(cluster_details['movies'])
-        print '='*40
+        print ('Cluster {} details:'.format(cluster_num))
+        print ('-'*20)
+        print ('Key features:', cluster_details['key_features'])
+        print ('Movies in this cluster:')
+        print (', '.join(cluster_details['movies']))
+        print ('='*40)
 
 
 import matplotlib.pyplot as plt
@@ -195,11 +195,11 @@ movie_data['Cluster'] = clusters
 
 # get the total number of movies per cluster
 c = Counter(clusters)   
-print c.items()  
+print (c.items())
 
 # get total clusters
 total_clusters = len(c)
-print 'Total Clusters:', total_clusters
+print ('Total Clusters:', total_clusters)
 
 
 cluster_data =  get_cluster_data(clustering_obj=ap_obj,
